@@ -36,6 +36,8 @@ export const FooterTabView = (props: FooterTabViewProps) => {
         }
     };
 
+    console.log(`props.selectedView=${props.selectedView}`);
+
     return (
         <Container>
             <Content />
@@ -47,55 +49,35 @@ export const FooterTabView = (props: FooterTabViewProps) => {
                                 key={idx}
                                 vertical
                                 onPress={() => props.onViewChange(name)}>
-                                {/* <Badge>
-                                    <Text>2</Text>
-                                </Badge> */}
                                 <Icon
-                                    name={getTabIcon(name)}
                                     type="AntDesign"
+                                    name={getTabIcon(name)}
                                     active={name === props.selectedView}
+                                    style={{
+                                        color:
+                                            name === props.selectedView
+                                                ? 'white'
+                                                : 'lightgray'
+                                    }}
                                 />
-                                <Text>{name}</Text>
+                                <Text
+                                    style={{
+                                        textTransform: 'capitalize',
+                                        color:
+                                            name === props.selectedView
+                                                ? 'white'
+                                                : 'lightgray'
+                                    }}>
+                                    {name}
+                                </Text>
                             </Button>
-
-                            // <Button
-                            //     key={idx}
-                            //     title={name}
-                            //     onPress={() => props.onViewChange(name)}
-                            // />
                         );
                     })}
                 </FooterTab>
             </Footer>
         </Container>
-
-        // <View style={styles.div}>
-        //     {views.map((name: string, idx: number) => {
-        //         return (
-        //             <Button
-        //                 key={idx}
-        //                 title={name}
-        //                 onPress={() => props.onViewChange(name)}
-        //             />
-        //         );
-        //     })}
-        // </View>
     );
 };
 
 const styles = StyleSheet.create({
-    div: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-        marginTop: 20,
-        backgroundColor: '#000'
-    },
-
-    viewSwitcher: {
-        backgroundColor: '#000'
-    }
 });
