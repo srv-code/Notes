@@ -9,11 +9,11 @@ import {
     StatusBar
 } from 'react-native';
 
-interface HeaderProps {
+interface HeaderViewProps {
     title: string;
 }
 
-export const Header = (props: HeaderProps) => {
+export const HeaderView = (props: HeaderViewProps) => {
     return (
         <View style={styles.div}>
             <Text style={styles.title}>{props.title}</Text>
