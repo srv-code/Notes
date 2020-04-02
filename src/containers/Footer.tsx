@@ -19,7 +19,13 @@ export const Footer = (props: FooterProps) => {
     return (
         <View style={styles.div}>
             {views.map((name: string, idx: number) => {
-                return <Button key={idx} title={name} onPress={() => props.onViewChange(name)} />
+                return (
+                    <Button
+                        key={idx}
+                        title={name}
+                        onPress={() => props.onViewChange(name)}
+                    />
+                );
             })}
         </View>
     );
@@ -27,10 +33,17 @@ export const Footer = (props: FooterProps) => {
 
 const styles = StyleSheet.create({
     div: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         position: 'absolute',
-        bottom: '10%',
+        bottom: 0,
         width: '100%',
         marginTop: 20,
+        backgroundColor: '#000'
+    },
+
+    viewSwitcher: {
         backgroundColor: '#000'
     }
 });
