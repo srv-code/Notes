@@ -9,13 +9,13 @@ import {
     StatusBar
 } from 'react-native';
 
-interface NoteListProps {}
+interface SearchViewProps {
+}
 
-export const NoteList = (props: NoteListProps) => {
+export const SearchView = (props: SearchViewProps) => {
     return (
-        <View>
-            <Text>List</Text>
-            <Button title='Press' onPress={() => {console.log('button pressed')}} />
+        <View >
+            <Text>SearchView</Text>
         </View>
     );
 };

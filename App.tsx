@@ -9,19 +9,33 @@ import {
 } from 'react-native';
 
 import {
-    Header,
     LearnMoreLinks,
     Colors,
     DebugInstructions,
     ReloadInstructions
 } from 'react-native/Libraries/NewAppScreen';
-import { NoteList } from './src/containers/NoteList';
+import { Footer } from './src/containers/Footer';
+import { RecentPagesView } from './src/containers/RecentPagesView';
+import { NotebooksView } from './src/containers/NotebooksView';
+import { SearchView } from './src/containers/SearchView';
+import { Header } from './src/components/Header';
+
+export const views = ['Recents', 'Notebooks', 'Search'];
 
 const App = () => {
+    const [currentView, setCurrentView] = useState(views[0]);
+
     return (
-        <View>
-            <NoteList />
-        </View>
+        <>
+            <Header title={currentView} />
+            {currentView === 'Recents' && <RecentPagesView />}
+            {currentView === 'Notebooks' && <NotebooksView />}
+            {currentView === 'Search' && <SearchView />}
+
+            <Footer
+                onViewChange={(viewName: string) => setCurrentView(viewName)}
+            />
+        </>
     );
 };
 
