@@ -18,6 +18,8 @@ export const HeaderView = (props: HeaderViewProps) => {
         <View style={styles.div}>
             <Text style={styles.title}>{props.title}</Text>
         </View>
+
+
     );
 };
 
