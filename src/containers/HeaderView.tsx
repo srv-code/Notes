@@ -8,6 +8,7 @@ import {
     Button,
     StatusBar
 } from 'react-native';
+import { Header, Left } from 'native-base';
 
 interface HeaderViewProps {
     title: string;
@@ -15,25 +16,28 @@ interface HeaderViewProps {
 
 export const HeaderView = (props: HeaderViewProps) => {
     return (
-        <View style={styles.div}>
-            <Text style={styles.title}>{props.title}</Text>
-        </View>
-
-
+        <Header style={styles.div}>
+            <Text style={styles.text}>{props.title}</Text>
+        </Header>
+        
+        // <View style={styles.div}>
+        //     <Text style={styles.text}>{props.title}</Text>
+        // </View>
     );
 };
 
 const styles = StyleSheet.create({
-    title: {
+    text: {
         fontSize: 30,
         color: '#FFF'
+        // textAlign: 'left'
     },
 
     div: {
-        paddingLeft: 20,
-        backgroundColor: '#000',
-        paddingTop: 10,
-        paddingBottom: 10,
-        marginBottom: 20
+        // paddingLeft: 20,
+        // backgroundColor: '#000',
+        // paddingTop: 10,
+        // paddingBottom: 10,
+        // marginBottom: 20
     }
 });
