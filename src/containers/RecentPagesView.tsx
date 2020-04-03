@@ -14,7 +14,7 @@ interface RecentPagesViewProps {
 
 export const RecentPagesView = (props: RecentPagesViewProps) => {
     return (
-        <View >
+        <View>
             <Text>RecentPagesView</Text>
         </View>
     );
