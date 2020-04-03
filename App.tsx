@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -17,7 +17,7 @@ import { Content } from 'native-base';
 export const views = ['Recents', 'Notebooks', 'Search'];
 
 const App = () => {
-    const [currentView, setCurrentView] = useState(views[0]);
+    const [currentView, setCurrentView] = React.useState(views[0]);
 
     return (
         <>
