@@ -23,6 +23,8 @@ import { SettingsView } from './SettingsView';
 
 interface HeaderViewProps {
     title: string;
+    toggleSettings: () => void;
+    isSettingsOpen: boolean;
 }
 
 export const HeaderView = (props: HeaderViewProps) => {
@@ -32,8 +34,12 @@ export const HeaderView = (props: HeaderViewProps) => {
                 <Text style={styles.text}>{props.title}</Text>
             </Body>
             <Right style={styles.leftItems}>
-                <Button iconLeft transparent>
-                    <Icon name='settings' />
+                <Button
+                    iconLeft
+                    transparent
+                    style={{ elevation: props.isSettingsOpen ? 14 : 0 }}
+                    onPress={() => props.toggleSettings()}>
+                    <Icon name="settings" />
                 </Button>
             </Right>
         </Header>
@@ -75,5 +81,14 @@ const styles = StyleSheet.create({
         // flex: 1,
         // flexDirection: 'row',
         // justifyContent: 'flex-start'
+    },
+
+    settingsActive: {
+        // shadowColor: '#000',
+        // shadowOffset: { width: 0, height: 5 },
+        // shadowOpacity: 0,
+        // shadowRadius: 10,
+        elevation: 14,
+        // transform: 'rotate(20deg)'
     }
 });
