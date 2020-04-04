@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-    Alert
-} from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Alert } from 'react-native';
 import { FooterTabView } from './src/containers/FooterTabView';
 import { HeaderView } from './src/containers/HeaderView';
 import { RecentPagesView } from './src/containers/RecentPagesView';
@@ -19,9 +11,7 @@ import { Content } from 'native-base';
 export const views = ['Recents', 'Notebooks', 'Search'];
 
 const App = () => {
-    React.useEffect(() => {
-        
-    }, []);
+    React.useEffect(() => {}, []);
 
     /* load from local storage */
     //////////////// TEST
@@ -49,11 +39,10 @@ const App = () => {
     /* views */
     const [currentView, setCurrentView] = React.useState(views[0]);
     const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
+    const [openedPage, setOpenedPage] = React.useState<string | undefined>();
 
     /* settings */
-    const [isDarkModeEnabled, setIsDarkModeEnabled] = React.useState<boolean>(
-        getDarkModeValueFromLocalStorage()
-    );
+    const [isDarkModeEnabled, setIsDarkModeEnabled] = React.useState<boolean>(getDarkModeValueFromLocalStorage());
 
     console.log(`isDarkModeEnabled: ${isDarkModeEnabled}`);
 
@@ -65,30 +54,37 @@ const App = () => {
         // Alert.alert(`dark mode set to ${isDarkModeEnabled.toString()}`);
     };
 
+    const openNotePage = (pageName: string) => {
+        console.log(`open page: ${pageName}`);
+        setOpenedPage(pageName);
+    };
+
     const getContent = () => {
         if (isSettingsOpen) {
             return (
                 <Content style={styles.content}>
                     <ScrollView>
-                        <SettingsView
-                            isDarkModeEnabled={isDarkModeEnabled}
-                            setDarkMode={(val) => setDarkMode(val)}
-                        />
+                        <SettingsView isDarkModeEnabled={isDarkModeEnabled} setDarkMode={(val) => setDarkMode(val)} />
                     </ScrollView>
+                </Content>
+            );
+        } if(openedPage) {
+            return (
+                // TODO: Do navigate to note page 
+                <Content>
+                    
                 </Content>
             );
         } else {
             return (
                 <>
                     <Content style={styles.content}>
-                        {currentView === 'Recents' && <RecentPagesView />}
+                        {currentView === 'Recents' && <RecentPagesView openNotePage={(pageName) => openNotePage(pageName)} />}
                         {currentView === 'Notebooks' && <NotebooksView />}
                         {currentView === 'Search' && <SearchView />}
                     </Content>
                     <FooterTabView
-                        onViewChange={(viewName: string) =>
-                            setCurrentView(viewName)
-                        }
+                        onViewChange={(viewName: string) => setCurrentView(viewName)}
                         selectedView={currentView}
                     />
                 </>

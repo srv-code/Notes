@@ -1,22 +1,6 @@
 import * as React from 'react';
-import {
-    Container,
-    Content,
-    Footer,
-    FooterTab,
-    Button,
-    Icon,
-    Text,
-    Badge
-} from 'native-base';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    StatusBar,
-    TabBarIOS
-} from 'react-native';
+import { Container, Content, Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
+import { SafeAreaView, StyleSheet, ScrollView, View, StatusBar, TabBarIOS } from 'react-native';
 import { views } from '../../App';
 import {
     ACTIVE_VIEW_BGCOLOR,
@@ -45,40 +29,25 @@ export const FooterTabView = (props: FooterTabViewProps) => {
     console.log(`props.selectedView=${props.selectedView}`);
 
     return (
-        <Container>
-            <Content />
-            <Footer>
-                <FooterTab>
-                    {views.map((name: string, idx: number) => {
-                        return (
-                            <Button
-                                key={idx}
-                                vertical
-                                onPress={() => props.onViewChange(name)}>
-                                <Icon
-                                    type="AntDesign"
-                                    name={getTabIcon(name)}
-                                    active={name === props.selectedView}
-                                    style={
-                                        name === props.selectedView
-                                            ? styles.activeViewIcon
-                                            : styles.inactiveViewIcon
-                                    }
-                                />
-                                <Text
-                                    style={
-                                        name === props.selectedView
-                                            ? styles.activeViewText
-                                            : styles.inactiveViewText
-                                    }>
-                                    {name}
-                                </Text>
-                            </Button>
-                        );
-                    })}
-                </FooterTab>
-            </Footer>
-        </Container>
+        <Footer>
+            <FooterTab>
+                {views.map((name: string, idx: number) => {
+                    return (
+                        <Button key={idx} vertical onPress={() => props.onViewChange(name)}>
+                            <Icon
+                                type="AntDesign"
+                                name={getTabIcon(name)}
+                                active={name === props.selectedView}
+                                style={name === props.selectedView ? styles.activeViewIcon : styles.inactiveViewIcon}
+                            />
+                            <Text style={name === props.selectedView ? styles.activeViewText : styles.inactiveViewText}>
+                                {name}
+                            </Text>
+                        </Button>
+                    );
+                })}
+            </FooterTab>
+        </Footer>
     );
 };
 

@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    StatusBar
-} from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 import {
     Container,
     Header,
@@ -14,20 +8,23 @@ import {
     Icon,
     Button,
     Text,
-    Content,
     List,
     ListItem,
     Right,
-    Left
+    Left,
+    Card,
+    CardItem
 } from 'native-base';
 
-interface RecentPagesViewProps {}
+interface RecentPagesViewProps {
+    openNotePage: (pageName: string) => void;
+}
 
 export const RecentPagesView = (props: RecentPagesViewProps) => {
     const [searchInput, setSearchInput] = React.useState('');
 
     return (
-        <Container>
+        <>
             <Header searchBar rounded>
                 <Item>
                     <Icon name="ios-search" />
@@ -35,35 +32,22 @@ export const RecentPagesView = (props: RecentPagesViewProps) => {
                     {searchInput !== '' && <Icon name="close" />}
                 </Item>
             </Header>
-            <Content>
+            <Card>
                 <List>
-                    <ListItem>
+                    <ListItem
+                        onPress={() => {
+                            props.openNotePage('Page 1');
+                        }}>
                         <Left>
-                            <Text>To Dos</Text>
-                        </Left>
-                        <Right>
-                            <Icon name="arrow-forward" />
-                        </Right>
-                    </ListItem>
-                    <ListItem>
-                        <Left>
-                            <Text>HashedIn Project</Text>
-                        </Left>
-                        <Right>
-                            <Icon name="arrow-forward" />
-                        </Right>
-                    </ListItem>
-                    <ListItem>
-                        <Left>
-                            <Text>College</Text>
+                            <Text>Page 1</Text>
                         </Left>
                         <Right>
                             <Icon name="arrow-forward" />
                         </Right>
                     </ListItem>
                 </List>
-            </Content>
-        </Container>
+            </Card>
+        </>
     );
 };
 
