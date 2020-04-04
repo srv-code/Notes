@@ -5,7 +5,8 @@ import {
     ScrollView,
     View,
     Text,
-    StatusBar
+    StatusBar,
+    Image
 } from 'react-native';
 import {
     Header,
@@ -14,29 +15,27 @@ import {
     Button,
     Content,
     Left,
+    Right,
     Body,
     Title
 } from 'native-base';
+import { SettingsView } from './SettingsView';
 
 interface HeaderViewProps {
     title: string;
 }
 
 export const HeaderView = (props: HeaderViewProps) => {
-    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-
     return (
         <Header style={styles.div}>
-            <Left style={styles.leftItems}>
-                <Button iconLeft transparent>
-                    <Icon
-                        name="menu"
-                        style={styles.menu}
-                        onPress={() => console.log('menu clicked')}
-                    />
-                </Button>
+            <Body style={styles.title}>
                 <Text style={styles.text}>{props.title}</Text>
-            </Left>
+            </Body>
+            <Right style={styles.leftItems}>
+                <Button iconLeft transparent>
+                    <Icon name='settings' />
+                </Button>
+            </Right>
         </Header>
 
         // <View style={styles.div}>
@@ -46,14 +45,21 @@ export const HeaderView = (props: HeaderViewProps) => {
 };
 
 const styles = StyleSheet.create({
+    title: {
+        // display: 'flex',
+        // flex: 1,
+        // justifyContent: 'center'
+    },
+
     text: {
         fontSize: 30,
-        color: '#FFF',
-        marginLeft: 20
+        color: '#FFF'
+        // marginLeft: 20
         // textAlign: 'left'
     },
 
     div: {
+        // display: 'flex'
         // paddingLeft: 20,
         // backgroundColor: '#000',
         // paddingTop: 10,
@@ -66,8 +72,8 @@ const styles = StyleSheet.create({
     },
 
     leftItems: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-start'
+        // flex: 1,
+        // flexDirection: 'row',
+        // justifyContent: 'flex-start'
     }
 });
