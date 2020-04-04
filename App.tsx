@@ -8,7 +8,6 @@ import {
     StatusBar,
     Alert
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 import { FooterTabView } from './src/containers/FooterTabView';
 import { HeaderView } from './src/containers/HeaderView';
 import { RecentPagesView } from './src/containers/RecentPagesView';
@@ -20,26 +19,30 @@ import { Content } from 'native-base';
 export const views = ['Recents', 'Notebooks', 'Search'];
 
 const App = () => {
+    React.useEffect(() => {
+        
+    }, []);
+
     /* load from local storage */
     //////////////// TEST
-    const doTest = () => {
-        AsyncStorage.getItem('test1').then((val) =>
-            console.log(`read test1 val=${val}`)
-        );
-        let newVal = new Date().getTime().toString();
-        console.log('before writing');
-        AsyncStorage.setItem('test1', newVal);
-        console.log(`written new test1 val=${newVal}`);
-    };
+    // const doTest = () => {
+    //     AsyncStorage.getItem('test1').then((val) =>
+    //         console.log(`read test1 val=${val}`)
+    //     );
+    //     let newVal = new Date().getTime().toString();
+    //     console.log('before writing');
+    //     AsyncStorage.setItem('test1', newVal);
+    //     console.log(`written new test1 val=${newVal}`);
+    // };
     // doTest();
     //////////////// TEST
 
     const getDarkModeValueFromLocalStorage = () => {
         let isEnabled = false;
-        AsyncStorage.getItem('isDarkModeEnabled').then((val) => {
-            console.log(`read from local storage: ${val}`);
-            isEnabled = val === 'true';
-        });
+        // AsyncStorage.getItem('isDarkModeEnabled').then((val) => {
+        //     console.log(`read from local storage: ${val}`);
+        //     isEnabled = val === 'true';
+        // });
         return isEnabled;
     };
 
@@ -56,7 +59,7 @@ const App = () => {
 
     const setDarkMode = (val: boolean) => {
         let newVal = !isDarkModeEnabled;
-        AsyncStorage.setItem('isDarkModeEnabled', newVal.toString());
+        // AsyncStorage.setItem('isDarkModeEnabled', newVal.toString());
         setIsDarkModeEnabled(newVal);
         console.log(`dark mode set to ${newVal.toString()}`);
         // Alert.alert(`dark mode set to ${isDarkModeEnabled.toString()}`);
